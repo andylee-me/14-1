@@ -1,0 +1,81 @@
+import random
+def hit(i,att:int):
+    hit = []
+    if i == "player1":
+        a.append(3*att/((3+player2_skip)*255.0))
+        for i in range(0, a[-1]):
+            hit.append("hit")
+        for i in range(0,100-len(hit)):
+            hit.append("miss")
+        ran = random.randint(1,101)
+        if hit[ran] == "miss":
+            return False
+        if hit[ran] == "hit":
+            return True
+    if i == "player2":
+        a.append(3 * att / ((3 + player1_skip) * 255.0))
+        for i in range(0, a[-1]):
+            hit.append("hit")
+        for i in range(0,100-len(hit)):
+            hit.append("miss")
+        ran = random.randint(1,101)
+        if hit[ran] == "miss":
+            return False
+        if hit[ran] == "hit":
+            return True
+def attack(i,o:int):
+    if i == "player1":
+        if o == 0:
+            print("甲賀忍蛙使出了影子分身")
+            player1_skip+=0.2
+        if o == 1:
+            print("甲賀忍蛙使出了居合斬(一字斬)")
+            hit(player1,95)
+
+            #95
+        if o == 2:
+            print("甲賀忍蛙使出了燕返(迴轉攻)")
+            #必中
+
+        if o == 3:
+            print("甲賀忍蛙使了飛水手裡劍")
+            hit(player1,100)
+            #100
+
+    if i == "player2" and stuck==0:
+        if o == 0:
+            print("噴火龍使出了噴射火焰")
+            hit(player1,100)
+        if o == 1:
+            print("噴火龍使出了龍爪")
+            hit(player1,100)
+        if o == 2:
+            print("噴火龍使出了爆炸烈焰")
+            hit(player1,90)
+            stuck+=1
+        if o == 3:
+            print("噴火龍使出了雷電拳(雷光掌)")
+            hit(player1,100)
+    stuck = 0
+
+player1_hpall = 290
+player1_hpdm = 290
+player1_skip = -1
+player2_hpall = 302
+player2_hpdm = 302
+player2_skip = -1.5
+stuck = 0
+while True:
+    print("甲賀忍蛙HP:",player1_hpdm,"/",player1_hpall,"\n噴火龍HP: ",player2_hpdm/player2_hpall*100,"%\n甲賀忍蛙該怎麼做?\n(1)影子分身\t(2)居合斬\n(3)燕返\t    (4)飛水手裡劍")
+    o = input("")
+    attack("player1",o)
+    if player2_hpdm <= 0:
+        print("You Win")
+        break
+    attack("player2",3)
+a = []
+hit = []
+
+
+
+
