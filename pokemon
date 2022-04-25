@@ -50,7 +50,7 @@ def attack(i,o:int):
             #必中
 
         if o == "4":
-            print("甲賀忍蛙使了飛水手裡劍")
+            print("甲賀忍蛙使出了飛水手裡劍")
             hit("player1",100)
             #100
 
