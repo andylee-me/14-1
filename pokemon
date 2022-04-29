@@ -1,5 +1,6 @@
 import random
 import math
+import time
 def hita(i,att:int):
     global player1_hpdm
     global player1_skip
@@ -21,8 +22,13 @@ def hita(i,att:int):
         ran = random.randint(1,100)
         if hit[ran] == "miss":
             miss = 1
+            print("...")
+            time.sleep(0.7)
             print("沒有命中")
+            time.sleep(0.7)
+            print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
         else:
+            time.sleep(0.7)
             player2_hpdm-=100
     if i == "player2":
         a.append(3 * att / ((3 + player1_skip) * 255.0))
@@ -30,12 +36,21 @@ def hita(i,att:int):
             hit.append("hit")
         for i in range(0,100-len(hit)):
             hit.append("miss")
-        ran = random.randint(1,101)
+        ran = random.randint(1,100)
         if hit[ran] == "miss":
             miss = 1
+            print("...")
+            time.sleep(0.7)
             print("沒有命中")
+            time.sleep(0.7)
+            print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
         else:
+            print("...")
+            time.sleep(0.7)
+            print("效果十分顯著")
             player1_hpdm -= 100
+            time.sleep(0.7)
+            print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 def attack(i,o:int):
     global stuck
     global player1_hpdm
@@ -44,15 +59,25 @@ def attack(i,o:int):
     if i == "player1":
         if o == "1":
             print("甲賀忍蛙使出了影子分身")
-            player1_skip+=0.2
+            if player1_skip < 0.2:
+                player1_skip+=0.2
+                print("...")
+                time.sleep(0.7)
+                print("甲賀忍蛙的速度上升了")
+                time.sleep(0.7)
+            else:
+                print("...")
+                time.sleep(0.7)
+                print("沒有發生任何變化")
+                time.sleep(0.7)
         if o == "2":
             print("甲賀忍蛙使出了居合斬(一字斬)")
             hita("player1",95)
-
             #95
         if o == "3":
             print("甲賀忍蛙使出了燕返(迴轉攻)")
             player2_hpdm -= 100
+            time.sleep(0.7)
             #必中
 
         if o == "4":
@@ -74,6 +99,7 @@ def attack(i,o:int):
         if o == 3:
             print("噴火龍使出了雷電拳(雷光掌)")
             hita("player2",100)
+            time.sleep(0.7)
     if stuck == 1:
         print("噴火龍無法行動")
     stuck = 0
@@ -93,14 +119,15 @@ while True:
     print("甲賀忍蛙HP:",player1_hpdm,"/",player1_hpall,"\n噴火龍HP: ",round(player2_hpdm/player2_hpall*100),"%\n甲賀忍蛙該怎麼做?\n(1)影子分身\t(2)居合斬\n(3)燕返\t    (4)飛水手裡劍")
     o = input("")
     attack("player1",o)
+    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     turn+=1
     if player2_hpdm <= 0:
         print("甲賀忍蛙HP:",player1_hpdm,"/",player1_hpall,"\n噴火龍HP: 0 %\n甲賀忍蛙該怎麼做?\n(1)影子分身\t(2)居合斬\n(3)燕返\t    (4)飛水手裡劍")
-        print("You Win")
+        print("噴火龍失去戰鬥能力")
         break
     attack("player2",3)
     if player1_hpdm <= 0:
-        print("甲賀忍蛙HP:",0,"/",player1_hpall,"\n噴火龍HP",round(player2_hpdm/player2_hpall*100), "%\n甲賀忍蛙該怎麼做?\n(1)影子分身\t(2)居合斬\n(3)燕返\t    (4)飛水手裡劍")
-        print("You Lose")
+        print("甲賀忍蛙HP:",0,"/",player1_hpall,"\n噴火龍HP",round(player2_hpdm/player2_hpall*100), "%\n")
+        print("甲賀忍蛙失去戰鬥能力")
         break
     turn-=1
